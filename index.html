@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Portfolio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+
+<style>
+*{
+ margin:0;
+ padding:0;
+ box-sizing:border-box;
+ font-family:'Poppins',sans-serif;
+}
+body{overflow-x:hidden;}
+
+/* ====== ANIMATION BASE CLASS ====== */
+.reveal{opacity:0;transform:translateY(60px);transition:1s ease;}
+.reveal.active{opacity:1;transform:translateY(0);}
+
+.zoom-reveal{opacity:0;transform:scale(0.8);transition:1s ease;}
+.zoom-reveal.active{opacity:1;transform:scale(1);}
+
+/* NAVBAR */
+nav{
+ width:100%;
+ position:fixed;
+ top:0;
+ left:0;
+ padding:20px 60px;
+ background:white;
+ display:flex;
+ justify-content:flex-end;
+ gap:40px;
+ font-weight:500;
+ z-index:10;
+ animation:fadeIn 1.2s ease;
+}
+nav a{text-decoration:none;color:black;font-size:16px;}
+
+@keyframes fadeIn{
+ from{opacity:0; transform:translateY(-20px);}
+ to{opacity:1; transform:translateY(0);}
+}
+
+/* Home Section */
+.home{
+ display:flex;
+ width:100%;
+ height:100vh;
+ margin-top:80px;
+}
+.home-left{
+ width:50%;
+ background:#f4ede7;
+ padding:120px 70px;
+}
+.home-left h1{font-size:80px;line-height:85px;}
+.home-left h3{font-size:28px;margin-bottom:20px;}
+
+.button-yellow{
+ background:#fcd842;
+ padding:12px 25px;
+ border:none;
+ font-weight:600;
+ margin-top:25px;
+ display:inline-block;
+ cursor:pointer;
+}
+.button-yellow a {color:black; text-decoration:none;}
+
+.button-black{
+ background:black;
+ color:white;
+ padding:12px 30px;
+ font-weight:600;
+ display:inline-block;
+ margin-top:25px;
+ cursor:pointer;
+}
+.button-black a {color:white; text-decoration:none;}
+
+.home-right{
+ width:50%;
+ background:#fcd842;
+ display:flex;
+ justify-content:center;
+ align-items:center;
+}
+
+/* ABOUT SECTION */
+.about{
+ width:100%;
+ background:#1e1e1e;
+ color:white;
+ padding:160px 60px;
+ display:flex;
+ justify-content:center;
+ align-items:center;
+ gap:80px;
+}
+.about h2{font-size:60px;color:#fcd842;margin-bottom:30px;}
+.about p{font-size:18px;line-height:30px;max-width:620px;}
+
+/* TOOLS */
+.tools{
+ padding:150px 60px;
+ background:#fcd842;
+ min-height:100vh;
+}
+.tools h2{
+ font-size:60px;
+ font-weight:900;
+ margin-bottom:30px;
+}
+.tools-grid{
+ margin-top:60px;
+ display:flex;
+ gap:80px;
+ justify-content:center;
+ align-items:center;
+ flex-wrap:wrap;
+}
+.tools-grid div{
+ text-align:center;
+ font-size:20px;
+ font-weight:500;
+}
+
+/* SERVICES */
+.services-grid{
+  margin-top:60px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:30px;
+  justify-content:center;
+}
+
+.service-card{
+  width:300px;
+  padding:25px;
+  background:white;
+  color:black;
+  border-radius:12px;
+  text-align:center;
+  box-shadow:0 4px 20px rgba(0,0,0,0.1);
+  transition:0.3s;
+}
+
+.service-card:hover{
+  transform:translateY(-10px);
+  box-shadow:0 6px 25px rgba(0,0,0,0.2);
+}
+
+.service-card h3{
+  font-size:22px;
+  font-weight:700;
+  margin-bottom:10px;
+}
+
+.service-card p{
+  font-size:15px;
+  opacity:0.8;
+}
+
+/* COMMUNITY */
+.community{
+ background:#f4ede7;
+ padding:150px 60px;
+ min-height:100vh;
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+}
+.community h2{font-size:60px;font-weight:900;margin-bottom:20px;}
+.community span{color:#fcd842;}
+.community p{max-width:550px;font-size:18px;line-height:30px;margin-bottom:30px;}
+
+/* SHOP SECTION */
+.shop{
+  background:#fcd842;
+  color:black;
+  padding:150px 60px;
+  min-height:100vh;
+}
+
+.shop-grid{
+  display:flex;
+  justify-content:center;
+  align-items:flex-start;
+  flex-wrap:wrap;
+  gap:40px;
+}
+
+.shop-card{
+  background:#2c2c2c;
+  width:355px;
+  padding:20px;
+  border-radius:12px;
+  text-align:center;
+  color:white;
+}
+
+.shop-card img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  border-radius:8px;
+}
+
+.shop-card h3{
+  margin-top:15px;
+  font-size:20px;
+  font-weight:600;
+}
+
+.shop-card p{
+  margin-top:5px;
+  font-size:16px;
+  opacity:0.8;
+}
+
+.shop-btn{
+  margin-top:15px;
+  background:#fcd842;
+  color:black;
+  padding:10px 20px;
+  font-weight:600;
+  border-radius:6px;
+  display:inline-block;
+}
+.shop-btn a{color:black;text-decoration:none;}
+
+/* GALLERY */
+.brands{
+ padding:160px 60px;
+ background:#1c1c1c;
+ min-height:100vh;
+}
+.brands h1{
+ font-size:60px;
+ font-weight:900;
+ margin-bottom:40px;
+ color:#f4ede7;
+}
+.brands-grid{
+ margin-top:30px;
+ display:flex;
+ justify-content:center;
+ flex-wrap:wrap;
+ gap:10px;
+}
+
+/* CONTACT SECTION */
+.contact{
+  background:#111;
+  color:white;
+  padding:150px 60px;
+  text-align:center;
+}
+.contact h2{
+  font-size:60px;
+  color:#fcd842;
+}
+.contact p{
+  font-size:18px;
+  opacity:0.8;
+  margin-top:10px;
+}
+.contact-btn{
+  margin-top:30px;
+  display:inline-block;
+  padding:14px 32px;
+  background:#fcd842;
+  color:black;
+  font-weight:700;
+  border-radius:8px;
+  text-decoration:none;
+  font-size:18px;
+}
+
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="reveal">
+ <a href="#home">Home</a>
+ <a href="#about">About</a>
+ <a href="#tools">Services</a>
+ <a href="#community">Community</a>
+ <a href="#shop">Shop</a>
+ <a href="#brands">Gallery</a>
+ <a href="#contact">Contact</a>
+</nav>
+
+<!-- HOME -->
+<section class="home" id="home">
+ <div class="home-left reveal">
+   <h3>hi i’m</h3>
+   <h1>Vanraj<br>Luhariya</h1>
+
+   <div class="button-yellow">
+      <a href="https://wa.me/919000000000">CONTENT</a>
+   </div><br>
+
+   <div class="button-black">
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSeBCzDMCGmr3X4Re_rNmv_3tPSzU1bC6xVmRkcMM7veIu7Evw/viewform">Apply Now</a>
+   </div>
+ </div>
+
+ <div class="home-right zoom-reveal">
+   <img src="myimage.JPG" width="550" />
+ </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+ <img class="zoom-reveal" src="yourimage.JPG" width="300">
+ <div class="reveal">
+   <h2>ABOUT ME</h2>
+   <p>My name is Vanraj Luhariya. I'm currently pursuing BCA and I specialize in photo/video editing and social media content creation. I love exploring creativity, experimenting with new ideas, and building things that stand out.</p>
+   <br><br><p>Let’s connect and create something awesome!</p>
+   <br><br>
+    <div style= "display:flex; gap:30px; margin-top:20px;">
+
+  <div class="button-yellow">
+    <a href="https://www.linkedin.com/in/vanraj-luhariya-1351892ba/">Linkedin</a>
+  </div>
+
+  <div class="button-yellow">
+    <a href="https://github.com/1rajluhariya">Github</a>
+  </div>
+
+  <div class="button-yellow">
+    <a href="https://wa.me/919726803983">main</a>
+  </div>
+</div>
+</section>
+
+<!-- TOOLS (SERVICES) -->
+<section class="tools" id="tools">
+ <h2 class="reveal">SERVICES I PROVIDE</h2>
+
+<div class="services-grid">
+
+  <div class="service-card reveal">
+    <h3>Photo Editing</h3>
+    <p>Professional retouching, color grading & aesthetic edits.</p>
+  </div>
+
+  <div class="service-card reveal">
+    <h3>Video Editing</h3>
+    <p>Cinematic reels, transitions & smooth cuts.</p>
+  </div>
+
+  <div class="service-card reveal">
+    <h3>Thumbnail Designing</h3>
+    <p>Eye-catching thumbnails for YouTube & social media.</p>
+  </div>
+
+  <div class="service-card reveal">
+    <h3>Logo Designing</h3>
+    <p>Modern, clean, unique logo designs for your brand.</p>
+  </div>
+
+  <div class="service-card reveal">
+    <h3>Social Media Content Creation</h3>
+    <p>Creative posts, reels, banners & more.</p>
+  </div>
+
+  <div class="service-card reveal">
+    <h3>Reels Editing</h3>
+    <p>Trend-based reels with smooth transitions.</p>
+  </div>
+
+  <div class="service-card reveal">
+    <h3>Poster & Banner Designing</h3>
+    <p>High-quality promotional posters and banners.</p>
+  </div>
+
+</div>
+
+<div class="tools-grid">
+   <div class="zoom-reveal"><img src="canva.png" width="40"><br>Canva Pro</div>
+   <div class="zoom-reveal"><img src="vn.png" width="40"><br>VN</div>
+   <div class="zoom-reveal"><img src="ps.png" width="40"><br>Photoshop</div>
+   <div class="zoom-reveal"><img src="lr.png" width="40"><br>Lightroom</div>
+   <div class="zoom-reveal"><img src="capcut.png" width="40"><br>Capcut</div>
+</div>
+</section>
+
+<!-- COMMUNITY -->
+<section class="community" id="community">
+ <div class="reveal">
+   <h2>meet my<br>COMM<span>UNITY</span></h2>
+   <p>I run an Instagram page called <b>Outfit Guruji </b>– OG Collection, dedicated to men’s fashion and styling. Today, our page has grown into a strong community of <b>11.1K</b>followers who share a passion for outfits, trends, and creativity. We explore new styles and inspire men daily.</p>
+   <div class="button-yellow">
+     <a href="https://instagram.com/outfitguruji">Instagram Page</a>
+   </div>
+ </div>
+ <img class="zoom-reveal" src="insta.png" width="500">
+</section>
+
+<!-- SHOP -->
+<section class="shop" id="shop">
+ <h1 class="reveal" style="font-size:45px;">My Shop</h1>
+
+ <div class="shop-grid">
+
+   <div class="shop-card zoom-reveal">
+     <img src="product2.png">
+     <h3>Sound Effects Pack</h3>
+     <p>₹199</p>
+     <div class="shop-btn"><a href="page.html">Buy Now</a></div>
+   </div>
+
+   <div class="shop-card zoom-reveal">
+     <img src="product1.png">
+     <h3>Video Editing Pack</h3>
+     <p>₹199</p>
+     <div class="shop-btn"><a href="page.html">Buy Now</a></div>
+   </div>
+
+   <div class="shop-card zoom-reveal">
+     <img src="product3.png">
+     <h3>Photo Editing Pack</h3>
+     <p>₹199</p>
+     <div class="shop-btn"><a href="page.html">Buy Now</a></div>
+   </div>
+
+ </div>
+</section>
+
+<!-- GALLERY -->
+<section class="brands" id="brands">
+ <h1 class="reveal">Captured<br>Aesthetics:</h1>
+ <div class="brands-grid">
+   <img class="zoom-reveal" src="img1.jpeg" width="302">
+   <img class="zoom-reveal" src="img2.jpeg" width="302">
+   <img class="zoom-reveal" src="img3.jpeg" width="302">
+   <img class="zoom-reveal" src="img4.jpeg" width="302">
+   <img class="zoom-reveal" src="img5.jpeg" width="302">
+   <img class="zoom-reveal" src="img7.jpeg" width="302">
+ </div>
+</section>
+
+<!-- CONTACT SECTION -->
+<section class="contact" id="contact">
+ <h2 class="reveal">CONTACT ME</h2>
+ <p class="reveal">Want to work with me? Let’s create something amazing together.</p>
+
+ <a class="contact-btn reveal" href="https://wa.me/919726803983">
+   Message on WhatsApp
+ </a>
+</section>
+
+<!-- SCROLL ANIMATION JS -->
+<script>
+const revealElements = document.querySelectorAll(".reveal, .zoom-reveal");
+
+function revealOnScroll(){
+ revealElements.forEach(el=>{
+   const rect = el.getBoundingClientRect().top;
+   const view = window.innerHeight - 100;
+   if(rect < view){ el.classList.add("active"); }
+ });
+}
+
+window.addEventListener("scroll", revealOnScroll);
+window.onload = revealOnScroll;
+</script>
+
+</body>
+</html>
+
+
